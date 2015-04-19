@@ -47,5 +47,9 @@ Vagrant.configure(2) do |config|
   apt-get update
   # Install build tools
   apt-get install -y make g++ git curl vim libcairo2-dev libav-tools nfs-common portmap
+  # Install Node
+  curl -sL https://deb.nodesource.com/setup | sudo bash -
+  sudo apt-get install -y nodejs
+  sudo npm update -g npm
   SHELL
 end
