@@ -10,6 +10,11 @@ Vagrant.configure(2) do |config|
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
+  # SSH Agent Forwarding
+  # # https://docs.vagrantup.com/v2/vagrantfile/ssh_settings.html
+  # Enable agent forwarding on vagrant ssh commands. This allows you to use ssh # keys on your host machine inside the guest.
+  config.ssh.forward_agent = true
+
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/trusty64"
