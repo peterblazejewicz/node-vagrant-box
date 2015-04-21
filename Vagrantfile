@@ -76,4 +76,9 @@ Vagrant.configure(2) do |config|
   echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
   echo "mongodb-org-tools hold" | sudo dpkg --set-selections
   SHELL
+
+  if vagrant_version >= "1.6.0"
+    config.vm.provision :shell, inline: "sudo service mongodb restart", run: "always"
+
+  end
 end
