@@ -58,6 +58,6 @@ Vagrant.configure(2) do |config|
   config.vm.provision :shell, :path => File.join( "provision", "provision.sh" )
 
   if vagrant_version >= "1.6.0"
-    config.vm.provision :shell, inline: "sudo service mongodb restart", run: "always"
+    config.vm.provision :shell, inline: "sudo service mongod restart", run: "always"
   end
 end
