@@ -55,36 +55,9 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell", inline: <<-SHELL
-  apt-get update
-  # Install build tools
-  apt-get install -y make g++ git curl vim libcairo2-dev libav-tools nfs-common portmap
-  # Install Node
-  apt-get update
-  curl -sL https://deb.nodesource.com/setup | sudo bash -
-  sudo apt-get install -y nodejs
-  sudo npm update -g npm
-  # install MongoDB (3.0.2)
-  apt-get update
-  # 1 Import the public key used by the package management system.
-  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-  # 2 Create a list file for MongoDB.
-  echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
-  # 3 Reload local package database.
-  sudo apt-get update
-  # 4 Install the MongoDB packages
-  # Install a specific release of MongoDB
-  sudo apt-get install -y mongodb-org=3.0.2 mongodb-org-server=3.0.2 mongodb-org-shell=3.0.2 mongodb-org-mongos=3.0.2 mongodb-org-tools=3.0.2
-  # Pin a specific version of MongoDB.
-  echo "mongodb-org hold" | sudo dpkg --set-selections
-  echo "mongodb-org-server hold" | sudo dpkg --set-selections
-  echo "mongodb-org-shell hold" | sudo dpkg --set-selections
-  echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
-  echo "mongodb-org-tools hold" | sudo dpkg --set-selections
-  SHELL
+  config.vm.provision :shell, :path => File.join( "provision", "provision.sh" )
 
   if vagrant_version >= "1.6.0"
     config.vm.provision :shell, inline: "sudo service mongodb restart", run: "always"
-
   end
 end
