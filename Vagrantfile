@@ -46,6 +46,8 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
+  # disable default syncing of project root
+  config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.synced_folder "www/", "/srv/www"
   #
   config.vm.provider "virtualbox" do |v|
