@@ -6,7 +6,9 @@
 # provisioning script whenever the commands `vagrant up`, `vagrant provision`,
 # or `vagrant reload` are used.
 apt-get update
-# Install build tools
+# install tools documented by Hackaton starter kit
+sudo apt-get install build-essential
+# Install other build tools
 apt-get install -y make g++ git curl vim libcairo2-dev libav-tools nfs-common portmap
 # Install Node
 apt-get update
