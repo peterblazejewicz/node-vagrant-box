@@ -15,6 +15,7 @@ apt-get update
 curl -sL https://deb.nodesource.com/setup | sudo bash -
 sudo apt-get install -y nodejs
 sudo npm update -g npm
+sudo npm install -g nodemon
 # install MongoDB (3.0.2)
 apt-get update
 # 1 Import the public key used by the package management system.
