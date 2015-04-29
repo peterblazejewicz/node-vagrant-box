@@ -33,3 +33,9 @@ echo "mongodb-org-server hold" | sudo dpkg --set-selections
 echo "mongodb-org-shell hold" | sudo dpkg --set-selections
 echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
 echo "mongodb-org-tools hold" | sudo dpkg --set-selections
+# Install Hackaton Starter content
+cd /srv/www/
+git clone --depth=1 https://github.com/sahat/hackathon-starter.git
+cd hackathon-starter/
+sudo npm install
+nodemon app.js
